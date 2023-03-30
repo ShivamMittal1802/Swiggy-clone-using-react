@@ -5,8 +5,8 @@ import CreateRestaurantLowerBox from "./lowerBox";
 export default function CreateRestaurentInfo(){
     return (
         <div className="restaurent">
-            {RestaurantUpperBox()}
-            {CreateRestaurantLowerBox()}
+            <RestaurantUpperBox/>
+            <CreateRestaurantLowerBox/>
         </div>
     );
 }
