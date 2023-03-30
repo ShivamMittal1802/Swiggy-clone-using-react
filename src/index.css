@@ -5,6 +5,74 @@
     letter-spacing: 0;
 }
 
+.top-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding-top:  1rem;
+    padding-bottom: 1rem;
+    background: #ffff;
+}
+
+.add-icon{
+    color: rgb(255, 115, 0);
+}
+
+.location-item {
+    margin-left: 40px;
+}
+.location-item-name {
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: underline;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.location-item-fullname {
+    color: #3d4152;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 3px;
+    color: #686b78;
+    white-space: nowrap;
+}
+
+.logo-location-content {
+    display: flex;
+    align-items: center;
+    letter-spacing: 0;
+    outline: none;
+    height: 100%
+}
+.icon-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;  
+
+}
+.icon-content-items {
+    list-style: none;
+    display: flex;
+    color: #686b78;
+
+}    
+.icon-content-text {
+    margin-left: 10px;
+}
+
+.icon-content-items:hover .icon-content-text {
+    cursor: pointer;
+    color: orange;
+}
+.icon-content-items:hover .icon-content-items-icon {
+    cursor:pointer;
+    fill: orange;
+}
+
+
 .header {
     display: flex;
     justify-content: space-between;
