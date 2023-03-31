@@ -16,8 +16,12 @@ function getFoodItemsById() {
 
 const MenuInfo = () => {
   const [foodItemsById, setFoodItemsById] = useState(getFoodItemsById());
-  const foodItems = Object.values(foodItemsById);
-  return <CreateFoodItems foodItems={foodItems} />;
+  return (
+    <CreateFoodItems
+      foodItemsById={foodItemsById}
+      setFoodItemsById={setFoodItemsById}
+    />
+  );
 };
 
 export default MenuInfo;
