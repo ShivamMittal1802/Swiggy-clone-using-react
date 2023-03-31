@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CreateFoodItems from "./createFoodItems";
 import FOOD_ITEMS from "../../data/constants/rawData";
 import FoodItem from "../../data/builders/FoodItem";
+import CreateSideNav from "./createSideNav";
 
 function getFoodItemsById() {
   const mapIdToFoodItem = {};
@@ -17,10 +18,17 @@ function getFoodItemsById() {
 const MenuInfo = () => {
   const [foodItemsById, setFoodItemsById] = useState(getFoodItemsById());
   return (
+    <div className="menu-info">
+      <CreateSideNav 
+      foodItemsById={foodItemsById}
+    />
     <CreateFoodItems
       foodItemsById={foodItemsById}
       setFoodItemsById={setFoodItemsById}
-    />
+    />;
+    </div>
+     
+    
   );
 };
 
