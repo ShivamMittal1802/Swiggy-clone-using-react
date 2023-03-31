@@ -1,6 +1,8 @@
 import React from "react";
+import FoodItem from "../../data/builders/FoodItem";
 
-const CreateFoodItems = ({ foodItems }) => {
+const CreateFoodItems = ({ foodItemsById, setFoodItemsById }) => {
+  const foodItems = Object.values(foodItemsById);
   const foodItemsByCategoryId = getFoodItemsByCategoryId(foodItems);
 
   return (
@@ -10,7 +12,11 @@ const CreateFoodItems = ({ foodItems }) => {
         return (
           <>
             <AddSection foodList={foodList} />
-            <RenderItems foodList={foodList} />
+            <RenderItems
+              foodList={foodList}
+              setFoodItemsById={setFoodItemsById}
+              foodItemsById={foodItemsById}
+            />
           </>
         );
       })}
@@ -27,16 +33,43 @@ const AddSection = ({ foodList }) => {
     </div>
   );
 };
-const RenderItems = ({ foodList }) => {
+const RenderItems = ({ foodList, foodItemsById, setFoodItemsById }) => {
   return (
     <>
       {foodList.map((value) => {
-        return <AddFoodItem foodItem={value} />;
+        return (
+          <AddFoodItem
+            foodItem={value}
+            setFoodItemsById={setFoodItemsById}
+            foodItemsById={foodItemsById}
+          />
+        );
       })}
     </>
   );
 };
-const AddFoodItem = ({ foodItem }) => {
+const AddFoodItem = ({ foodItem, foodItemsById, setFoodItemsById }) => {
+  const addToCart = (id) => {
+    const item = foodItemsById[id];
+    const updatedFoodItem = new FoodItem({
+      ...foodItem,
+      itemCartCount: item.getCount() + 1,
+    });
+    const updatedFoodItemById = { ...foodItemsById, [id]: updatedFoodItem };
+
+    setFoodItemsById(updatedFoodItemById);
+  };
+  const removeFromCart = (id) => {
+    const item = foodItemsById[id];
+    if (item.getCount() > 0) {
+      const updatedFoodItem = new FoodItem({
+        ...item,
+        itemCartCount: item.getCount() - 1,
+      });
+      const updatedFoodItemById = { ...foodItemsById, [id]: updatedFoodItem };
+      setFoodItemsById(updatedFoodItemById);
+    }
+  };
   return (
     <div className="food-item">
       <div id="left-food">
@@ -48,11 +81,21 @@ const AddFoodItem = ({ foodItem }) => {
       <div id="right-food">
         <img src={foodItem.getImageUrl()} alt="" />
         <div>
-          <button id={foodItem.getId()}>add</button>
+          <button
+            id={foodItem.getId()}
+            onClick={() => addToCart(foodItem.getId())}
+          >
+            add
+          </button>
           <span className="counter" id={`counter${foodItem.getId()}`}>
             {foodItem.getCount()}
           </span>
-          <button id={foodItem.getId()}>remove</button>
+          <button
+            id={foodItem.getId()}
+            onClick={() => removeFromCart(foodItem.getId())}
+          >
+            remove
+          </button>
         </div>
         <p></p>
       </div>
