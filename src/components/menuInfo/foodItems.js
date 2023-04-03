@@ -1,7 +1,7 @@
 import React from "react";
 import FoodItem from "../../data/builders/FoodItem";
 
-const CreateFoodItems = ({ foodItemsById, setFoodItemsById }) => {
+const FoodItems = ({ foodItemsById, setFoodItemsById }) => {
   const foodItems = Object.values(foodItemsById);
   const foodItemsByCategoryId = getFoodItemsByCategoryId(foodItems);
 
@@ -114,4 +114,4 @@ function getFoodItemsByCategoryId(foodItems) {
   return foodItemsByCategoryId;
 }
 
-export default CreateFoodItems;
+export default FoodItems;

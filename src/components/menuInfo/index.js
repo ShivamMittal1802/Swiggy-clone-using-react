@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import CreateFoodItems from "./createFoodItems";
+import FoodItems from "./foodItems";
 import FOOD_ITEMS from "../../data/constants/rawData";
 import FoodItem from "../../data/builders/FoodItem";
-import CreateSideNav from "./createSideNav";
+import SideNav from "./sideNav";
 
 function getFoodItemsById() {
   const mapIdToFoodItem = {};
@@ -19,16 +19,13 @@ const MenuInfo = () => {
   const [foodItemsById, setFoodItemsById] = useState(getFoodItemsById());
   return (
     <div className="menu-info">
-      <CreateSideNav 
-      foodItemsById={foodItemsById}
-    />
-    <CreateFoodItems
-      foodItemsById={foodItemsById}
-      setFoodItemsById={setFoodItemsById}
-    />;
+      <SideNav foodItemsById={foodItemsById} />
+      <FoodItems
+        foodItemsById={foodItemsById}
+        setFoodItemsById={setFoodItemsById}
+      />
+      ;
     </div>
-     
-    
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CreateRestaurantLowerBox() {
+export default function RestaurantLowerBox() {
   return (
     <div className="lower-box">
       <div id="search-bar">
@@ -14,4 +14,4 @@ export default function CreateRestaurantLowerBox() {
       </div>
     </div>
   );
-};
+}
