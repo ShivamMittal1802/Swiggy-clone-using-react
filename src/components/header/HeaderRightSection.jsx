@@ -20,7 +20,7 @@ const ICONCONTENT= [ {
     content:"Cart"
 }];
 
-export default function CreateHeaderRightSection() {
+export default function HeaderRightSection() {
 
     const listItems = ICONCONTENT.map( element => 
     <li key={element.id} className="icon-content-items"> {element.icon} <span>{element.content}</span> 
