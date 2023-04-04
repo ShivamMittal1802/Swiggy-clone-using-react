@@ -1,5 +1,4 @@
 import React from "react";
-import FoodItem from "../../data/builders/FoodItem";
 
 const FoodItems = ({ foodItemsById, setFoodItemsById }) => {
   const foodItems = Object.values(foodItemsById);
@@ -33,41 +32,37 @@ const AddSection = ({ foodList }) => {
     </div>
   );
 };
-const RenderItems = ({ foodList, foodItemsById, setFoodItemsById }) => {
+const RenderItems = ({ foodList, setFoodItemsById }) => {
   return (
     <>
-      {foodList.map((value) => {
+      {foodList.map((foodItem) => {
         return (
           <AddFoodItem
-            foodItem={value}
+            foodItem={foodItem}
             setFoodItemsById={setFoodItemsById}
-            foodItemsById={foodItemsById}
           />
         );
       })}
     </>
   );
 };
-const AddFoodItem = ({ foodItem, foodItemsById, setFoodItemsById }) => {
-  const addToCart = (id) => {
-    const item = foodItemsById[id];
-    const updatedFoodItem = new FoodItem({
-      ...foodItem,
-      itemCartCount: item.getCount() + 1,
+const AddFoodItem = ({ foodItem, setFoodItemsById }) => {
+  const addToCart = () => {
+    foodItem.setCount(foodItem.getCount() + 1);
+    const updatedFoodItem = { ...foodItem };
+    const id = foodItem.getId();
+    setFoodItemsById((foodItemsById) => {
+      return { ...foodItemsById, [id]: updatedFoodItem };
     });
-    const updatedFoodItemById = { ...foodItemsById, [id]: updatedFoodItem };
-
-    setFoodItemsById(updatedFoodItemById);
   };
-  const removeFromCart = (id) => {
-    const item = foodItemsById[id];
-    if (item.getCount() > 0) {
-      const updatedFoodItem = new FoodItem({
-        ...item,
-        itemCartCount: item.getCount() - 1,
+  const removeFromCart = () => {
+    if (foodItem.getCount() > 0) {
+      foodItem.setCount(foodItem.getCount() - 1);
+      const updatedFoodItem = { ...foodItem };
+      const id = foodItem.getId();
+      setFoodItemsById((foodItemsById) => {
+        return { ...foodItemsById, [id]: updatedFoodItem };
       });
-      const updatedFoodItemById = { ...foodItemsById, [id]: updatedFoodItem };
-      setFoodItemsById(updatedFoodItemById);
     }
   };
   return (
@@ -81,19 +76,13 @@ const AddFoodItem = ({ foodItem, foodItemsById, setFoodItemsById }) => {
       <div id="right-food">
         <img src={foodItem.getImageUrl()} alt="" />
         <div>
-          <button
-            id={foodItem.getId()}
-            onClick={() => addToCart(foodItem.getId())}
-          >
+          <button id={foodItem.getId()} onClick={addToCart}>
             add
           </button>
           <span className="counter" id={`counter${foodItem.getId()}`}>
             {foodItem.getCount()}
           </span>
-          <button
-            id={foodItem.getId()}
-            onClick={() => removeFromCart(foodItem.getId())}
-          >
+          <button id={foodItem.getId()} onClick={removeFromCart}>
             remove
           </button>
         </div>
