@@ -91,6 +91,7 @@ const AddFoodItem = ({ foodItem, setFoodItemsById }) => {
     </div>
   );
 };
+
 function getFoodItemsByCategoryId(foodItems) {
   const foodItemsByCategoryId = {};
   foodItems.forEach((item) => {

@@ -5,16 +5,26 @@ import FoodItem from "../../data/builders/FoodItem";
 import SideNav from "./sideNav";
 import Cart from "./cart";
 
+// function getFoodItemsById() {
+//   const mapIdToFoodItem = {};
+//   FOOD_ITEMS.forEach((item) => {
+//     const foodItem = new FoodItem(item);
+//     if (mapIdToFoodItem[foodItem.getId()])
+//       mapIdToFoodItem[foodItem.getId()].push(foodItem);
+//     else mapIdToFoodItem[foodItem.getId()] = foodItem;
+//   });
+//   return mapIdToFoodItem;
+// }
+
 function getFoodItemsById() {
-  const mapIdToFoodItem = {};
-  FOOD_ITEMS.forEach((item) => {
-    const foodItem = new FoodItem(item);
-    if (mapIdToFoodItem[foodItem.getId()])
-      mapIdToFoodItem[foodItem.getId()].push(foodItem);
-    else mapIdToFoodItem[foodItem.getId()] = foodItem;
-  });
-  return mapIdToFoodItem;
+  const foodItemsById = FOOD_ITEMS.reduce((foodItemById,item)=>{
+    const foodItem = new FoodItem(item);   
+     foodItemById[foodItem.getId()] = foodItem;
+     return foodItemById;
+  },{})
+  return foodItemsById;
 }
+
 
 const MenuInfo = () => {
   const [foodItemsById, setFoodItemsById] = useState(getFoodItemsById());
