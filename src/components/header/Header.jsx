@@ -1,8 +1,8 @@
 import React from "react";
-import HeaderLeftSection from "./createHeaderLeft";
-import HeaderRightSection from "./createHeaderRight";
+import HeaderLeftSection from "./HeaderLeftSection";
+import HeaderRightSection from "./HeaderRightSection";
 
-export default function CreateHeader() {
+export default function Header() {
     return (
             <section className="top-banner"> 
                 <HeaderLeftSection />
