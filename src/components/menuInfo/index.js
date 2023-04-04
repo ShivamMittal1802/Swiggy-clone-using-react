@@ -3,6 +3,7 @@ import FoodItems from "./foodItems";
 import FOOD_ITEMS from "../../data/constants/rawData";
 import FoodItem from "../../data/builders/FoodItem";
 import SideNav from "./sideNav";
+import Cart from "./cart";
 
 function getFoodItemsById() {
   const mapIdToFoodItem = {};
@@ -24,7 +25,7 @@ const MenuInfo = () => {
         foodItemsById={foodItemsById}
         setFoodItemsById={setFoodItemsById}
       />
-      ;
+      <Cart foodItemsById={foodItemsById} setFoodItemsById={setFoodItemsById} />
     </div>
   );
 };
