@@ -72,6 +72,25 @@
     fill: orange;
 }
 
+.link-nav { 
+    align-items: center;
+    background-color: #eef0f3;      
+}
+.link-nav-items {
+    display: flex;
+    direction: "row";
+    color: #93959f;
+    list-style: none;
+    margin-left: 160px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 10px
+
+}
+.link-nav-items-content {
+    font-size: 10px;
+}
+
 
 .header {
     display: flex;
