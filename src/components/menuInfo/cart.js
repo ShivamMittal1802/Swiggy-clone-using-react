@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const Cart = ({ foodItemsById, setFoodItemsById }) => {
+  const navigate = useNavigate();
+  const handleClick = useCallback(()=>{
+    navigate('/checkout')
+  }, [navigate]);
+  let flag=false;
+
   return (
     <div id="cart">
       {Object.values(foodItemsById).map((foodItem) => {
-        if (foodItem.getCount() > 0)
+        if (foodItem.getCount() > 0) {
+          flag = true;
           return (
             <CartItem
               foodItem={foodItem}
               setFoodItemsById={setFoodItemsById}
-            ></CartItem>
+            />
           );
+        }
+        
       })}
+      {flag && <button onClick={handleClick}> checkout</button>}
     </div>
   );
 };
@@ -19,6 +31,7 @@ const Cart = ({ foodItemsById, setFoodItemsById }) => {
 const CartItem = ({ foodItem, setFoodItemsById }) => {
   const id = foodItem.getId();
   const count = foodItem.getCount();
+  
   const addToCart = () => {
     foodItem.setCount(count + 1);
     const updatedFoodItem = foodItem;
@@ -36,6 +49,7 @@ const CartItem = ({ foodItem, setFoodItemsById }) => {
     }
   };
   return (
+    <>
     <div id={`list-${foodItem.getId()}`}>
       <div>{foodItem.getName()}</div>
       <button id={id} onClick={addToCart}>
@@ -47,6 +61,8 @@ const CartItem = ({ foodItem, setFoodItemsById }) => {
       </button>
       <div id={`price-${id}`}>{foodItem.getPrice() * count}</div>
     </div>
+    
+    </>
   );
 };
 

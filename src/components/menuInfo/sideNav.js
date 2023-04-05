@@ -1,6 +1,7 @@
 import React from "react";
 
 const SideNav = ({ foodItemsById }) => {
+  console.log(foodItemsById);
   const foodItems = Object.values(foodItemsById);
   const categoryNameByCategoryId = getCategoryNameByCategoryId(foodItems);
   return (
