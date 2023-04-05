@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter,Routes,Route} from "react-router-dom";
-import Checkout from "./components/menuInfo/checkoutBtn/Checkout";
+import Checkout from "./components/menuInfo/cart/checkout/Checkout";
 import Landing from "./components/landing";
 import FOOD_ITEMS from "./data/constants/rawData";
 import FoodItem from "./data/builders/FoodItem";

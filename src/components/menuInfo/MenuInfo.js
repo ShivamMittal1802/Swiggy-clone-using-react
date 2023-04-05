@@ -1,9 +1,9 @@
 import React from "react";
-import FoodItems from "./foodItems";
+import FoodItems from "./FoodItems/FoodItems";
 // import FOOD_ITEMS from "../../data/constants/rawData";
 // import FoodItem from "../../data/builders/FoodItem";
-import SideNav from "./sideNav";
-import Cart from "./cart";
+import SideNav from "./SideNav";
+import Cart from "./cart/Cart";
 
 // function getFoodItemsById() {
 //   const mapIdToFoodItem = {};
