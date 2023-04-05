@@ -12,9 +12,9 @@ const Cart = ({ foodItemsById, setFoodItemsById }) => {
   let flag=false;
   
   return (
-    <div id="cart" className="cart">
+    <div className="cart">
       {Object.values(foodItemsById).map((foodItem) => {
-        if (foodItem.getCount() > 0) {
+          if(foodItem.getCount() > 0) {
           flag = true;
           return (
             <CartItem
