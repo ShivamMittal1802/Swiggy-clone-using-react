@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import FoodItems from "./foodItems";
-import FOOD_ITEMS from "../../data/constants/rawData";
-import FoodItem from "../../data/builders/FoodItem";
+// import FOOD_ITEMS from "../../data/constants/rawData";
+// import FoodItem from "../../data/builders/FoodItem";
 import SideNav from "./sideNav";
 import Cart from "./cart";
 
@@ -16,18 +16,19 @@ import Cart from "./cart";
 //   return mapIdToFoodItem;
 // }
 
-function getFoodItemsById() {
-  const foodItemsById = FOOD_ITEMS.reduce((foodItemById,item)=>{
-    const foodItem = new FoodItem(item);   
-     foodItemById[foodItem.getId()] = foodItem;
-     return foodItemById;
-  },{})
-  return foodItemsById;
-}
+// function getFoodItemsById() {
+//   const foodItemsById = FOOD_ITEMS.reduce((foodItemById,item)=>{
+//     const foodItem = new FoodItem(item);   
+//      foodItemById[foodItem.getId()] = foodItem;
+//      return foodItemById;
+//   },{})
+//   return foodItemsById;
+// }
 
 
-const MenuInfo = () => {
-  const [foodItemsById, setFoodItemsById] = useState(getFoodItemsById());
+const MenuInfo = ({foodItemsById, setFoodItemsById}) => {
+  // const [foodItemsById, setFoodItemsById] = useState(getFoodItemsById());
+  
   return (
     <div className="menu-info">
       <SideNav foodItemsById={foodItemsById} />

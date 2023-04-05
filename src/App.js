@@ -1,19 +1,37 @@
 import React from "react";
-import BreadCrumb from "./components/breadCrumbList/BreadCrumb";
-import RestaurentInfo from "./components/restaurant/ResturantInfo";
-import MenuInfo from "./components/menuInfo";
-import Header from "./components/header/Header";
-import Footer from "./components/footer";
+import { BrowserRouter,Routes,Route} from "react-router-dom";
+import Checkout from "./components/menuInfo/checkoutBtn/Checkout";
+import Landing from "./components/landing";
+import FOOD_ITEMS from "./data/constants/rawData";
+import FoodItem from "./data/builders/FoodItem";
+import { useState } from "react";
+
+function getFoodItemsById() {
+  const foodItemsById = FOOD_ITEMS.reduce((foodItemById,item)=>{
+    const foodItem = new FoodItem(item);   
+     foodItemById[foodItem.getId()] = foodItem;
+     return foodItemById;
+  },{})
+  return foodItemsById;
+}
+
 
 function App() {
+  const [foodItemsById, setFoodItemsById] = useState(getFoodItemsById());
+  console.log(foodItemsById);
   return (
-    <div className="container">
-      <Header />
-      <BreadCrumb />
-      <RestaurentInfo />
-      <MenuInfo />
-      <Footer />
-    </div>
+   <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Landing 
+      foodItemsById={foodItemsById}
+      setFoodItemsById={setFoodItemsById}  
+      />}/>
+      <Route path="/checkout" element={<Checkout
+      foodItemsById={foodItemsById}
+      setFoodItemsById={setFoodItemsById}  
+      />}/>
+    </Routes>
+   </BrowserRouter>
   );
 }
 
