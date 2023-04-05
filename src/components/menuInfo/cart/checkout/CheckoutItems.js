@@ -8,7 +8,7 @@ const CheckoutItems = ({foodItemsById, setFoodItemsById}) => {
             {Object.values(foodItemsById).map((foodItem) => {
                 if(foodItem.getCount() > 0 ){
                     return (
-                        <CheckoutItem
+                        <CheckoutItem 
                         foodItem={foodItem}
                         setFoodItemsById={setFoodItemsById}
                         />

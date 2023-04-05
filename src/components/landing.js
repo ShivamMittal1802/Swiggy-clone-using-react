@@ -3,7 +3,7 @@ import BreadCrumb from "./breadCrumbList/BreadCrumb"
 import Footer from "./footer"
 import Header from "./header/Header"
 import MenuInfo from "./menuInfo/MenuInfo"
-import RestaurentInfo from "./restaurant/ResturantInfo"
+import RestaurentInfo from "./restaurantInfo/ResturantInfo"
 
 const Landing = ({foodItemsById, setFoodItemsById})=>{
     console.log(foodItemsById);
