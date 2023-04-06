@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import FoodItem from "../../../../data/builders/FoodItem";
 import CheckoutItems from "./CheckoutItems";
 import RemoveBtn from "./RemoveBtn";
 
@@ -10,6 +11,15 @@ const Checkout = ({ foodItemsById, setFoodItemsById }) => {
   const handleClick = useCallback(()=>{
     navigate('/')
   }, [navigate]);
+
+    const totalAmount = () =>{
+      let total = 0;
+      Object.values(foodItemsById).forEach((foodItem) => {
+        // console.log("dekh lo", foodItem.getCount())
+        total += foodItem.getCount() * foodItem.getPrice();
+      });
+      return total;
+    }
 
     return (
         <div className="checkout">
@@ -23,6 +33,10 @@ const Checkout = ({ foodItemsById, setFoodItemsById }) => {
             />
         <button className="checkOut-addMore-btn" onClick={handleClick}>ADD MORE FOD ITEMS</button>
         {/* <button onClick={removeAll} > Remove All</button> */}
+       
+        <div>
+          Total Amount : {totalAmount()}
+        </div>
         <RemoveBtn
         foodItemsById={foodItemsById}
         setFoodItemsById={setFoodItemsById}
