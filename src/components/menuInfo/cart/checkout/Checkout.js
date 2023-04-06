@@ -13,11 +13,9 @@ const Checkout = ({ foodItemsById, setFoodItemsById }) => {
   }, [navigate]);
 
     const totalAmount = () =>{
-      let total = 0;
-      Object.values(foodItemsById).forEach((foodItem) => {
-        // console.log("dekh lo", foodItem.getCount())
-        total += foodItem.getCount() * foodItem.getPrice();
-      });
+      const total = Object.values(foodItemsById).reduce((total, foodItem)=>{
+        return total + foodItem.getCount() * foodItem.getPrice();
+      },0)
       return total;
     }
 
