@@ -325,11 +325,7 @@
     margin-bottom: 8px;
 }
 
-.rating {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-}
+
 
 .restaurent .offer {
     border: 1px solid white;
