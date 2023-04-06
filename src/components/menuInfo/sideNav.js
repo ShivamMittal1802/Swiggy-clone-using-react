@@ -22,10 +22,16 @@ const SideNav = ({ foodItemsById }) => {
 };
 
 const getCategoryNameByCategoryId = (foodItems) => {
-  const categoryNameByCategoryId = {};
-  foodItems.forEach((item) => {
+
+  const categoryNameByCategoryId = foodItems.reduce((categoryNameByCategoryId, item) => {
     categoryNameByCategoryId[item.getCategoryId()] = item.getCategoryName();
-  });
+    return categoryNameByCategoryId;
+  }, {});
+  
+  // const categoryNameByCategoryId = {};
+  // foodItems.forEach((item) => {
+  //   categoryNameByCategoryId[item.getCategoryId()] = item.getCategoryName();
+  // });
   return categoryNameByCategoryId;
 };
 
