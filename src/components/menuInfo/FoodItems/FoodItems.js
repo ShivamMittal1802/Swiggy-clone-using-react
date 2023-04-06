@@ -24,14 +24,24 @@ const FoodItems = ({ foodItemsById, setFoodItemsById }) => {
     </div>
   );
   function getFoodItemsByCategoryId(foodItems) {
-    const foodItemsByCategoryId = {};
-    foodItems.forEach((item) => {
+
+    const foodItemsByCategoryId = foodItems.reduce((foodItemsByCategoryId, item)=>{
       if (foodItemsByCategoryId[item.getCategoryId()]) {
         foodItemsByCategoryId[item.getCategoryId()].push(item);
       } else {
         foodItemsByCategoryId[item.getCategoryId()] = [item];
       }
-    });
+      return foodItemsByCategoryId;
+    },{})
+
+    // const foodItemsByCategoryId = {};
+    // foodItems.forEach((item) => {
+    //   if (foodItemsByCategoryId[item.getCategoryId()]) {
+    //     foodItemsByCategoryId[item.getCategoryId()].push(item);
+    //   } else {
+    //     foodItemsByCategoryId[item.getCategoryId()] = [item];
+    //   }
+    // });
     return foodItemsByCategoryId;
   }
   
