@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter,Routes,Route} from "react-router-dom";
 import Checkout from "./components/menuInfo/cart/checkout/Checkout";
-import Landing from "./components/landing";
+import Landing from "./components/Landing";
 import FOOD_ITEMS from "./data/constants/rawData";
 import FoodItem from "./data/builders/FoodItem";
 import { useState } from "react";
