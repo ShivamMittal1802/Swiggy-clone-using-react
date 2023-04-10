@@ -4,9 +4,9 @@ import React from "react";
 
 const AddFoodItem = ({ foodItem, setFoodItemsById }) => {
     const addToCart = () => {
-      foodItem.setCount(foodItem.getCount() + 1);
       const updatedFoodItem = { ...foodItem };
-      const id = foodItem.getId();
+      const id = updatedFoodItem.getId();
+      updatedFoodItem.setCount(foodItem.getCount() + 1);
       setFoodItemsById((foodItemsById) => {
         return { ...foodItemsById, [id]: updatedFoodItem };
       });

@@ -7,8 +7,8 @@ const RemoveBtn = ({foodItemsById, setFoodItemsById}) => {
      
     const handleRemoveFoodItems = () => {
         foodItems.forEach( (foodItem) => { 
-            foodItem.setCount(0);
             const updatedFoodItem ={...foodItem};
+            updatedFoodItem.setCount(0);
             setFoodItemsById({...foodItemsById,[itemId] : updatedFoodItem});
         })
         
