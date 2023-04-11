@@ -6,9 +6,9 @@ import Cart from "./cart/Cart";
 const MenuInfo = () => {
   return (
     <div className="menu-info">
-      <SideNav/>
-      <FoodItems/>
-      <Cart/>
+      <SideNav />
+      <FoodItems />
+      <Cart />
     </div>
   );
 };
