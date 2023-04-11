@@ -1,26 +1,28 @@
 import React from "react";
+import { useCallback } from "react";
 
 
 
 const AddFoodItem = ({ foodItem, setFoodItemsById }) => {
-    const addToCart = () => {
+    const addToCart =useCallback(() => {
       const updatedFoodItem = { ...foodItem };
       const id = updatedFoodItem.getId();
       updatedFoodItem.setCount(foodItem.getCount() + 1);
       setFoodItemsById((foodItemsById) => {
         return { ...foodItemsById, [id]: updatedFoodItem };
       });
-    };
-    const removeFromCart = () => {
+    },[foodItem, setFoodItemsById]);
+
+    const removeFromCart =useCallback( () => {
       if (foodItem.getCount() > 0) {
-        foodItem.setCount(foodItem.getCount() - 1);
         const updatedFoodItem = { ...foodItem };
+        updatedFoodItem.setCount(foodItem.getCount() - 1);
         const id = foodItem.getId();
         setFoodItemsById((foodItemsById) => {
           return { ...foodItemsById, [id]: updatedFoodItem };
         });
       }
-    };
+    },[foodItem, setFoodItemsById]);
     return (
       <div className="food-item">
         <div id="left-food">

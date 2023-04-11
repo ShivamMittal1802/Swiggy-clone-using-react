@@ -1,4 +1,5 @@
 import React from "react";
+import { useCallback } from "react";
 
 
 const CartItem = ({ foodItem, setFoodItemsById }) => {
@@ -6,16 +7,17 @@ const CartItem = ({ foodItem, setFoodItemsById }) => {
     const count = foodItem.getCount();
     
     const addToCart = () => {
-      foodItem.setCount(count + 1);
-      const updatedFoodItem = foodItem;
+      const updatedFoodItem = {...foodItem};
+      updatedFoodItem.setCount(count + 1);
       setFoodItemsById((foodItemsById) => {
         return { ...foodItemsById, [id]: updatedFoodItem };
       });
     };
+
     const removeFromCart = () => {
       if (count > 0) {
-        foodItem.setCount(count - 1);
         const updatedFoodItem = foodItem;
+        updatedFoodItem.setCount(count - 1);
         setFoodItemsById((foodItemsById) => {
           return { ...foodItemsById, [id]: updatedFoodItem };
         });
