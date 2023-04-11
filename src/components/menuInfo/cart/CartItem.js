@@ -1,6 +1,5 @@
-import React from "react";
-import { useCallback } from "react";
-
+import React, {useContext } from "react";
+import { FoodItemsContext } from "../../../App";
 
 const CartItem = ({ foodItem, setFoodItemsById }) => {
     const id = foodItem.getId();

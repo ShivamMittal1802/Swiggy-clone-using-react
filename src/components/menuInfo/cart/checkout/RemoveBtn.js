@@ -1,7 +1,9 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useContext} from "react";
+import { FoodItemsContext } from "../../../../App";
 
 
-const RemoveBtn = ({foodItemsById, setFoodItemsById}) => {
+const RemoveBtn = () => {
+    const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext)
     const foodItems = Object.values(foodItemsById);
     const itemId= Object.keys(foodItemsById);
      

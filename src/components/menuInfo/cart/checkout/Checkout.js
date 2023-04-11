@@ -1,16 +1,18 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import FoodItem from "../../../../data/builders/FoodItem";
 import CheckoutItems from "./CheckoutItems";
 import RemoveBtn from "./RemoveBtn";
+import { FoodItemsContext } from "../../../../App";
 
 
-const Checkout = ({ foodItemsById, setFoodItemsById }) => {
+const Checkout = () => {
     // console.log(foodItemsById);
+    const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext);
     const navigate = useNavigate();
-  const handleClick = useCallback(()=>{
-    navigate('/')
-  }, [navigate]);
+    const handleClick = useCallback(()=>{
+      navigate('/')
+    }, [navigate]);
 
     const totalAmount = useMemo(() => {
       const total = Object.values(foodItemsById).reduce((total, foodItem) => {
