@@ -1,12 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import RenderItems from "./renderFoodItems/RenderItems";
 import ShowCategory from "./ShowCategory";
 import { FoodItemsContext } from "../../../App";
+import { searchQueryContext } from "../../Landing";
+import { filteredListContext } from "../MenuInfo";
 
 const FoodItems = () => {
+  const {searchQuery, setSearchQuery} = useContext(searchQueryContext);
+  const { filteredList, setFilteredList } = useContext(filteredListContext);
   const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext);
+
+  const [foodItemFilteredList, setFoodItemFilteredList] = useState([]);
+
+  useEffect(() => {
+    if (foodItemFilteredList !== undefined) {
+      setFilteredList(foodItemFilteredList);
+    }
+  }, [foodItemFilteredList]);
+
+  useEffect(() => {
+    setFoodItemFilteredList(Object.values(foodItemsById).filter((item)=>{
+      return item.getName().toLowerCase().includes(searchQuery.toLowerCase());
+    }))
+  }, [searchQuery, foodItemsById]);
+
+  
   const foodItems = Object.values(foodItemsById);
-  const foodItemsByCategoryId = getFoodItemsByCategoryId(foodItems);
+  const foodItemsByCategoryId = getFoodItemsByCategoryId(foodItemFilteredList);
+  // console.log(foodItems)
+  // console.log("mein chal rha hu")
+  // console.log(foodItemFilteredList)
 
   return (
     <div className="food-items">
@@ -25,6 +48,7 @@ const FoodItems = () => {
       })}
     </div>
   );
+
   function getFoodItemsByCategoryId(foodItems) {
     const foodItemsByCategoryId = foodItems.reduce(
       (foodItemsByCategoryId, item) => {
