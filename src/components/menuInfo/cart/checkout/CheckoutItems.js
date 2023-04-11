@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import CheckoutItem from "./checkoutItem";
+import { FoodItemsContext } from "../../../../App";
 
-
-const CheckoutItems = ({foodItemsById, setFoodItemsById}) => {
+const CheckoutItems = () => {
+    const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext)
     return (
         <div>
             {Object.values(foodItemsById).map((foodItem) => {

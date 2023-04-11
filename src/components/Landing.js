@@ -5,16 +5,13 @@ import Header from "./header/Header"
 import MenuInfo from "./menuInfo/MenuInfo"
 import RestaurentInfo from "./restaurantInfo/ResturantInfo"
 
-const Landing = ({foodItemsById, setFoodItemsById})=>{
-    console.log(foodItemsById);
+const Landing = ()=>{
+    // console.log(foodItemsById);
     return <div className="container">
       <Header />
       <BreadCrumb />
       <RestaurentInfo />
-      <MenuInfo 
-       foodItemsById={foodItemsById}
-      setFoodItemsById={setFoodItemsById}  
-      />
+      <MenuInfo />
       <Footer />
     </div>
 }

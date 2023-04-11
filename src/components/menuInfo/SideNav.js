@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import _ from "lodash"
+import { FoodItemsContext } from "../../App";
 
-const SideNav = ({ foodItemsById }) => {
+const SideNav = () => {
   // console.log(foodItemsById);
-  
+  const { foodItemsById } = useContext(FoodItemsContext)
   const categoryNameByCategoryId = getCategoryNameByCategoryId(foodItemsById);
   return (
     <div className="category">

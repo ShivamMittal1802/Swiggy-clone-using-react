@@ -1,9 +1,10 @@
-import React, { useCallback} from "react";
+import React, { useCallback, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import CartItem from "./CartItem";
+import { FoodItemsContext } from "../../../App";
 
-
-const Cart = ({ foodItemsById, setFoodItemsById }) => {
+const Cart = () => {
+  const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext)
   const navigate = useNavigate();
   const handleClick = useCallback(()=>{
     navigate('/checkout')

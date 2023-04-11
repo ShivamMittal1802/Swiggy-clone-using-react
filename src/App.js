@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, createContext } from "react";
 import { BrowserRouter,Routes,Route} from "react-router-dom";
 import Checkout from "./components/menuInfo/cart/checkout/Checkout";
 import Landing from "./components/Landing";
 import FOOD_ITEMS from "./data/constants/rawData";
 import FoodItem from "./data/builders/FoodItem";
-import { useState } from "react";
+
+export const FoodItemsContext = createContext();
 
 function getFoodItemsById() {
   const foodItemsById = FOOD_ITEMS.reduce((foodItemById,item)=>{
@@ -18,20 +19,16 @@ function getFoodItemsById() {
 
 function App() {
   const [foodItemsById, setFoodItemsById] = useState(getFoodItemsById());
-  console.log(foodItemsById);
+
   return (
-   <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Landing 
-      foodItemsById={foodItemsById}
-      setFoodItemsById={setFoodItemsById}  
-      />}/>
-      <Route path="/checkout" element={<Checkout
-      foodItemsById={foodItemsById}
-      setFoodItemsById={setFoodItemsById}  
-      />}/>
-    </Routes>
-   </BrowserRouter>
+    <FoodItemsContext.Provider value={{foodItemsById, setFoodItemsById}}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Landing/>} />
+          <Route path="/checkout" element={<Checkout/>} />
+        </Routes>
+      </BrowserRouter>
+    </FoodItemsContext.Provider>
   );
 }
 

@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import RenderItems from "./renderFoodItems/RenderItems";
 import ShowCategory from "./ShowCategory";
+import { FoodItemsContext } from "../../../App";
 
-const FoodItems = ({ foodItemsById, setFoodItemsById }) => {
+const FoodItems = () => {
+  const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext)
   const foodItems = Object.values(foodItemsById);
   const foodItemsByCategoryId = getFoodItemsByCategoryId(foodItems);
 
@@ -33,15 +35,6 @@ const FoodItems = ({ foodItemsById, setFoodItemsById }) => {
       }
       return foodItemsByCategoryId;
     },{})
-
-    // const foodItemsByCategoryId = {};
-    // foodItems.forEach((item) => {
-    //   if (foodItemsByCategoryId[item.getCategoryId()]) {
-    //     foodItemsByCategoryId[item.getCategoryId()].push(item);
-    //   } else {
-    //     foodItemsByCategoryId[item.getCategoryId()] = [item];
-    //   }
-    // });
     return foodItemsByCategoryId;
   }
   
