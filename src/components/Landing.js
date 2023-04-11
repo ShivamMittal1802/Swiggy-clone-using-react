@@ -5,9 +5,10 @@ import Header from "./header/Header";
 import MenuInfo from "./menuInfo/MenuInfo";
 import RestaurentInfo from "./restaurantInfo/RestaurantInfo";
 
-const Landing = ()=>{
-    // console.log(foodItemsById);
-    return <div className="container">
+const Landing = () => {
+  // console.log(foodItemsById);
+  return (
+    <div className="container">
       <Header />
       <BreadCrumb />
       <RestaurentInfo />
