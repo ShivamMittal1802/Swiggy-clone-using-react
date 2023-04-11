@@ -93,6 +93,9 @@
     font-size: 10px;
 }
 
+.HeaderRightSectionContent:hover{
+    color: orange;
+}
 
 .resturant {
     display: flex;
