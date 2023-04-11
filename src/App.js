@@ -18,7 +18,6 @@ function getFoodItemsById() {
 
 function App() {
   const [foodItemsById, setFoodItemsById] = useState(getFoodItemsById());
-
   return (
     <FoodItemsContext.Provider value={{ foodItemsById, setFoodItemsById }}>
       <BrowserRouter>
