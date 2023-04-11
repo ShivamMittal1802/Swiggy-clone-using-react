@@ -1,9 +1,10 @@
 import React from "react";
+import _ from "lodash"
 
 const SideNav = ({ foodItemsById }) => {
-  console.log(foodItemsById);
-  const foodItems = Object.values(foodItemsById);
-  const categoryNameByCategoryId = getCategoryNameByCategoryId(foodItems);
+  // console.log(foodItemsById);
+  
+  const categoryNameByCategoryId = getCategoryNameByCategoryId(foodItemsById);
   return (
     <div className="category">
       <ul className="category-list">
@@ -21,17 +22,13 @@ const SideNav = ({ foodItemsById }) => {
   );
 };
 
-const getCategoryNameByCategoryId = (foodItems) => {
-
-  const categoryNameByCategoryId = foodItems.reduce((categoryNameByCategoryId, item) => {
+const getCategoryNameByCategoryId = (foodItemsById) => {
+  const foodItems = Object.values(foodItemsById);
+  const categoryNameByCategoryId = _.reduce(foodItems, (categoryNameByCategoryId, item)=>{
     categoryNameByCategoryId[item.getCategoryId()] = item.getCategoryName();
     return categoryNameByCategoryId;
-  }, {});
-  
-  // const categoryNameByCategoryId = {};
-  // foodItems.forEach((item) => {
-  //   categoryNameByCategoryId[item.getCategoryId()] = item.getCategoryName();
-  // });
+  },{})
+
   return categoryNameByCategoryId;
 };
 
