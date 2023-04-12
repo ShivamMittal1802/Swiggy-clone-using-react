@@ -6,8 +6,8 @@ import { searchQueryContext } from "../../Landing";
 import { filteredListContext } from "../MenuInfo";
 
 const FoodItems = () => {
-  const {searchQuery, setSearchQuery} = useContext(searchQueryContext);
-  const { filteredList, setFilteredList } = useContext(filteredListContext);
+  const {searchQuery} = useContext(searchQueryContext);
+  const { setFilteredList } = useContext(filteredListContext);
   const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext);
 
   const [foodItemFilteredList, setFoodItemFilteredList] = useState([]);
@@ -16,16 +16,14 @@ const FoodItems = () => {
     if (foodItemFilteredList !== undefined) {
       setFilteredList(foodItemFilteredList);
     }
-  }, [foodItemFilteredList]);
+  }, [foodItemFilteredList,setFilteredList]);
 
   useEffect(() => {
     setFoodItemFilteredList(Object.values(foodItemsById).filter((item)=>{
       return item.getName().toLowerCase().includes(searchQuery.toLowerCase());
     }))
   }, [searchQuery, foodItemsById]);
-
   
-  const foodItems = Object.values(foodItemsById);
   const foodItemsByCategoryId = getFoodItemsByCategoryId(foodItemFilteredList);
   // console.log(foodItems)
   // console.log("mein chal rha hu")
