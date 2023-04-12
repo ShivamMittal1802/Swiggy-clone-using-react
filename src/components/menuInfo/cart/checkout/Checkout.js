@@ -7,6 +7,7 @@ import { FoodItemsContext } from "../../../../App";
 const Checkout = () => {
   // console.log(foodItemsById);
   const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext);
+
   const navigate = useNavigate();
   const handleClick = useCallback(() => {
     navigate("/");
@@ -22,7 +23,6 @@ const Checkout = () => {
   return (
     <div className="checkout">
       <div className="checkOut-header">
-        {" "}
         <svg viewBox="0 0 559 825" height="49" width="34" fill="#fc8019">
           <path
             fillRule="evenodd"

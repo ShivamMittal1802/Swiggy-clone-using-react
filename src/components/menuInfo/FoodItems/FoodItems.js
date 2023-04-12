@@ -13,13 +13,16 @@ const FoodItems = () => {
 
   const [foodItemFilteredList, setFoodItemFilteredList] = useState([]);
 
+  // useEffect(() => {
+  //   if (foodItemFilteredList !== undefined) {
+  //     setFilteredList(foodItemFilteredList);
+  //   }
+  // }, [foodItemFilteredList,setFilteredList]);
+
   useEffect(() => {
     if (foodItemFilteredList !== undefined) {
       setFilteredList(foodItemFilteredList);
     }
-  }, [foodItemFilteredList,setFilteredList]);
-
-  useEffect(() => {
     setFoodItemFilteredList(Object.values(foodItemsById).filter((item)=>{
       if(isVeg){
         // console.log(item.getIsVeg())
@@ -28,8 +31,7 @@ const FoodItems = () => {
       else
         return item.getName().toLowerCase().includes(searchQuery.toLowerCase());
     }))
-  }, [searchQuery, foodItemsById, isVeg]);
-
+  }, [searchQuery,setFilteredList,foodItemFilteredList, foodItemsById, isVeg ]);
   
   const foodItemsByCategoryId = getFoodItemsByCategoryId(foodItemFilteredList);
   
