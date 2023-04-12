@@ -1,9 +1,7 @@
 import React, {useContext} from "react";
-import { FoodItemsContext} from "../../App";
 import { searchQueryContext } from "../Landing";
 
 function RestaurantTabs() {
-  const {foodItemsById} = useContext(FoodItemsContext);
   const {searchQuery, setSearchQuery} = useContext(searchQueryContext);
 
   const handleSearchInputChange = (event) => {
