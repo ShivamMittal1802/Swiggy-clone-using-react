@@ -12,11 +12,11 @@ const MenuInfo = () => {
 
   return (
     <filteredListContext.Provider value={{filteredList, setFilteredList}}>
-    <div className="menu-info">
-      <SideNav />
-      <FoodItems />
-      <Cart />
-    </div>
+        <div className="menu-info">
+          <SideNav />
+          <FoodItems />
+          <Cart />
+        </div>
     </filteredListContext.Provider>
   );
 };

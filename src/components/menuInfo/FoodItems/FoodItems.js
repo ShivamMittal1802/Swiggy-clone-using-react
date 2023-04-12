@@ -2,13 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import RenderItems from "./renderFoodItems/RenderItems";
 import ShowCategory from "./ShowCategory";
 import { FoodItemsContext } from "../../../App";
-import { searchQueryContext } from "../../Landing";
+import { isVegContext, searchQueryContext } from "../../Landing";
 import { filteredListContext } from "../MenuInfo";
 
 const FoodItems = () => {
   const {searchQuery} = useContext(searchQueryContext);
-  const { setFilteredList } = useContext(filteredListContext);
-  const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext);
+  const {setFilteredList } = useContext(filteredListContext);
+  const {foodItemsById, setFoodItemsById } = useContext(FoodItemsContext);
+  const {isVeg} = useContext(isVegContext);
 
   const [foodItemFilteredList, setFoodItemFilteredList] = useState([]);
 
@@ -20,14 +21,18 @@ const FoodItems = () => {
 
   useEffect(() => {
     setFoodItemFilteredList(Object.values(foodItemsById).filter((item)=>{
-      return item.getName().toLowerCase().includes(searchQuery.toLowerCase());
+      if(isVeg){
+        // console.log(item.getIsVeg())
+        return item.getIsVeg() && item.getName().toLowerCase().includes(searchQuery.toLowerCase());
+      }
+      else
+        return item.getName().toLowerCase().includes(searchQuery.toLowerCase());
     }))
-  }, [searchQuery, foodItemsById]);
+  }, [searchQuery, foodItemsById, isVeg]);
+
   
   const foodItemsByCategoryId = getFoodItemsByCategoryId(foodItemFilteredList);
-  // console.log(foodItems)
-  // console.log("mein chal rha hu")
-  // console.log(foodItemFilteredList)
+  
 
   return (
     <div className="food-items">

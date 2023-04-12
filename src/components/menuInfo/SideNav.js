@@ -6,8 +6,8 @@ import { filteredListContext } from "./MenuInfo";
 
 const SideNav = () => {
   const { filteredList, setFilteredList } = useContext(filteredListContext);
-  const {searchQuery, setSearchQuery} = useContext(searchQueryContext);
-  const { foodItemsById } = useContext(FoodItemsContext);
+  // const {searchQuery, setSearchQuery} = useContext(searchQueryContext);
+  // const { foodItemsById } = useContext(FoodItemsContext);
   // console.log(searchQuery)
   const categoryNameByCategoryId = getCategoryNameByCategoryId(filteredList);
   return (
