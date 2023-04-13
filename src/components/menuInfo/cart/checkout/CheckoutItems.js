@@ -6,16 +6,8 @@ const CheckoutItems = () => {
   const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext);
   return (
     <div>
-      {Object.values(foodItemsById).map((foodItem) => {
-        if (foodItem.getCount() > 0) {
-          return (
-            <CheckoutItem
-              foodItem={foodItem}
-              setFoodItemsById={setFoodItemsById}
-            />
-          );
-        }
-      })}
+      {Object.values(foodItemsById).map((foodItem) => foodItem.getCount() > 0 && <CheckoutItem foodItem={foodItem} setFoodItemsById={setFoodItemsById}/>
+      )}
     </div>
   );
 };

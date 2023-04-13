@@ -1,5 +1,4 @@
-import React, {useContext, useState} from "react";
-import { FoodItemsContext} from "../../App";
+import React, {useContext} from "react";
 import { isVegContext, searchQueryContext } from "../Landing";
 
 function RestaurantTabs() {
