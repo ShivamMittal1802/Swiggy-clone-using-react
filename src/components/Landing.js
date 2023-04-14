@@ -8,15 +8,13 @@ import RestaurentInfo from "./restaurantInfo/RestaurantInfo";
 export const searchQueryContext = createContext();
 export const isVegContext = createContext();
 
-
 const Landing = () => {
-  // console.log(foodItemsById);
   const [searchQuery, setSearchQuery] = useState("");
-  const [isVeg, setIsVeg] = useState(false)
-  
+  const [isVeg, setIsVeg] = useState(false);
+
   return (
     <searchQueryContext.Provider value={{ searchQuery, setSearchQuery }}>
-      <isVegContext.Provider value={{isVeg, setIsVeg}}>
+      <isVegContext.Provider value={{ isVeg, setIsVeg }}>
         <div className="container">
           <Header />
           <BreadCrumb />
@@ -26,7 +24,6 @@ const Landing = () => {
         </div>
       </isVegContext.Provider>
     </searchQueryContext.Provider>
-
   );
 };
 
