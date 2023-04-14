@@ -1,16 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import RenderItems from "./renderFoodItems/RenderItems";
 import ShowCategory from "./ShowCategory";
 import { FoodItemsContext } from "../../../App";
-import { isVegContext, searchQueryContext } from "../../Landing";
-import { filteredListContext } from "../MenuInfo";
+import { filteredFoodItemsListContext } from "../MenuInfo";
 
 const FoodItems = () => {
-  const {searchQuery} = useContext(searchQueryContext);
-  const {setFilteredList } = useContext(filteredListContext);
-  const {foodItemsById, setFoodItemsById } = useContext(FoodItemsContext);
-  const {isVeg} = useContext(isVegContext);
+  const { filteredFoodItemsList } = useContext(filteredFoodItemsListContext);
+  const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext);
 
+<<<<<<< Updated upstream
   const [foodItemFilteredList, setFoodItemFilteredList] = useState([]);
 
   // useEffect(() => {
@@ -35,6 +33,9 @@ const FoodItems = () => {
   
   const foodItemsByCategoryId = getFoodItemsByCategoryId(foodItemFilteredList);
   
+=======
+  const foodItemsByCategoryId = getFoodItemsByCategoryId(filteredFoodItemsList);
+>>>>>>> Stashed changes
 
   return (
     <div className="food-items">
@@ -55,18 +56,20 @@ const FoodItems = () => {
   );
 
   function getFoodItemsByCategoryId(foodItems) {
-    const foodItemsByCategoryId = foodItems.reduce(
-      (foodItemsByCategoryId, item) => {
-        if (foodItemsByCategoryId[item.getCategoryId()]) {
-          foodItemsByCategoryId[item.getCategoryId()].push(item);
-        } else {
-          foodItemsByCategoryId[item.getCategoryId()] = [item];
-        }
-        return foodItemsByCategoryId;
-      },
-      {}
-    );
-    return foodItemsByCategoryId;
+    if (foodItems) {
+      const foodItemsByCategoryId = foodItems.reduce(
+        (foodItemsByCategoryId, item) => {
+          if (foodItemsByCategoryId[item.getCategoryId()]) {
+            foodItemsByCategoryId[item.getCategoryId()].push(item);
+          } else {
+            foodItemsByCategoryId[item.getCategoryId()] = [item];
+          }
+          return foodItemsByCategoryId;
+        },
+        {}
+      );
+      return foodItemsByCategoryId;
+    }
   }
 };
 

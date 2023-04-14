@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import _ from "lodash";
-import { filteredListContext } from "./MenuInfo";
+import { filteredFoodItemsListContext } from "./MenuInfo";
 
 const SideNav = () => {
-  const { filteredList } = useContext(filteredListContext);
+  const { filteredFoodItemsList } = useContext(filteredFoodItemsListContext);
 
-  const categoryNameByCategoryId = getCategoryNameByCategoryId(filteredList);
+  const categoryNameByCategoryId = getCategoryNameByCategoryId(
+    filteredFoodItemsList
+  );
   return (
     <div className="category">
       <ul className="category-list">
@@ -23,10 +25,9 @@ const SideNav = () => {
   );
 };
 
-const getCategoryNameByCategoryId = (filteredList) => {
-  // const foodItems = Object.values(foodItemsById);
+const getCategoryNameByCategoryId = (filteredFoodItemsListContext) => {
   const categoryNameByCategoryId = _.reduce(
-    filteredList,
+    filteredFoodItemsListContext,
     (categoryNameByCategoryId, item) => {
       categoryNameByCategoryId[item.getCategoryId()] = item.getCategoryName();
       return categoryNameByCategoryId;

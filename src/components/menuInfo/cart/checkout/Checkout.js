@@ -5,7 +5,6 @@ import RemoveBtn from "./RemoveBtn";
 import { FoodItemsContext } from "../../../../App";
 
 const Checkout = () => {
-  // console.log(foodItemsById);
   const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext);
 
   const navigate = useNavigate();
