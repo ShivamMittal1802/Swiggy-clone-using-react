@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+
 import { isVegContext, searchQueryContext } from "../Landing";
 
 function RestaurantTabs() {
