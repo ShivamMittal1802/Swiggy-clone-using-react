@@ -8,34 +8,7 @@ const FoodItems = () => {
   const { filteredFoodItemsList } = useContext(filteredFoodItemsListContext);
   const { foodItemsById, setFoodItemsById } = useContext(FoodItemsContext);
 
-<<<<<<< Updated upstream
-  const [foodItemFilteredList, setFoodItemFilteredList] = useState([]);
-
-  // useEffect(() => {
-  //   if (foodItemFilteredList !== undefined) {
-  //     setFilteredList(foodItemFilteredList);
-  //   }
-  // }, [foodItemFilteredList,setFilteredList]);
-
-  useEffect(() => {
-    if (foodItemFilteredList !== undefined) {
-      setFilteredList(foodItemFilteredList);
-    }
-    setFoodItemFilteredList(Object.values(foodItemsById).filter((item)=>{
-      if(isVeg){
-        // console.log(item.getIsVeg())
-        return item.getIsVeg() && item.getName().toLowerCase().includes(searchQuery.toLowerCase());
-      }
-      else
-        return item.getName().toLowerCase().includes(searchQuery.toLowerCase());
-    }))
-  }, [searchQuery,setFilteredList,foodItemFilteredList, foodItemsById, isVeg ]);
-  
-  const foodItemsByCategoryId = getFoodItemsByCategoryId(foodItemFilteredList);
-  
-=======
   const foodItemsByCategoryId = getFoodItemsByCategoryId(filteredFoodItemsList);
->>>>>>> Stashed changes
 
   return (
     <div className="food-items">
